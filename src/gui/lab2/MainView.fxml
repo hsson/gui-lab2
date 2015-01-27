@@ -17,7 +17,7 @@
         <items>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <SplitPane dividerPositions="0.5" layoutX="62.0" layoutY="88.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <SplitPane dividerPositions="0.45166959578207383" layoutX="62.0" layoutY="88.0" orientation="VERTICAL" prefHeight="200.0" prefWidth="160.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                     <items>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="418.0" prefWidth="564.0">
                            <children>
@@ -43,13 +43,13 @@
                                     <ComboBox maxWidth="1.7976931348623157E308" prefHeight="51.0" prefWidth="403.0" promptText="Huvudingrediens" />
                                     <AnchorPane prefHeight="45.0" prefWidth="532.0">
                                        <children>
-                                          <Label contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" text="Maxpris: " AnchorPane.leftAnchor="0.0" />
-                                          <TextField alignment="CENTER_RIGHT" layoutX="96.0" layoutY="-7.0" maxWidth="1.7976931348623157E308" prefHeight="51.0" prefWidth="438.0" AnchorPane.leftAnchor="94.0" AnchorPane.rightAnchor="0.0" />
+                                          <Label contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" text="Maxpris (kr): " AnchorPane.leftAnchor="0.0" />
+                                          <TextField alignment="CENTER_RIGHT" layoutX="135.0" layoutY="-7.0" maxWidth="1.7976931348623157E308" prefHeight="51.0" prefWidth="397.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
                                     <HBox maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="532.0">
                                        <children>
-                                          <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="51.0" styleClass="easy" text="Lätt" HBox.hgrow="ALWAYS">
+                                          <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="51.0" selected="true" styleClass="easy" text="Lätt" HBox.hgrow="ALWAYS">
                                              <toggleGroup>
                                                 <ToggleGroup fx:id="diff" />
                                              </toggleGroup>
@@ -58,10 +58,10 @@
                                           <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="51.0" styleClass="hard" text="Svår" toggleGroup="$diff" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
-                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                    <AnchorPane prefHeight="91.0" prefWidth="532.0">
                                        <children>
-                                          <Slider layoutY="35.0" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="533.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                                          <Label alignment="CENTER" contentDisplay="BOTTOM" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="416.0" text="Maxtid" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                          <Slider layoutY="49.0" majorTickUnit="20.0" max="150.0" maxWidth="1.7976931348623157E308" min="10.0" minorTickCount="1" prefHeight="28.0" prefWidth="533.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                          <Label alignment="CENTER" contentDisplay="BOTTOM" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="416.0" text="Maxtid (minuter)" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
                                  </children>
