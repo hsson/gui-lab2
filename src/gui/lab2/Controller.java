@@ -8,6 +8,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
@@ -19,6 +20,7 @@ public class Controller implements Initializable {
     public ToggleButton toggleMedium;
     public ToggleButton toggleHard;
     public CheckBox checkMaxTime;
+    public ListView<String> listSearchResult;
 
     private Model model = new Model();
     private int oldSliderVal;
@@ -28,6 +30,13 @@ public class Controller implements Initializable {
         comboCuisine.setItems(new ObservableListWrapper<String>(model.getCuisineList()));
         comboIngredient.setItems(new ObservableListWrapper<String>(model.getIngredientList()));
         sliderMaxTime.valueProperty().addListener(new MaxTimeListener());
+
+        // List dummy data
+        List<String> test = model.getCuisineList();
+        test.addAll(model.getIngredientList());
+        test.addAll(test);
+
+        listSearchResult.setItems(new ObservableListWrapper<String>(test));
     }
 
     public void comboCuisineOnAction() {

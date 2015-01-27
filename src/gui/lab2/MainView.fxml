@@ -44,18 +44,14 @@
                                     <AnchorPane prefHeight="45.0" prefWidth="532.0">
                                        <children>
                                           <Label contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" text="Maxpris (kr): " AnchorPane.leftAnchor="0.0" />
-                                          <TextField fx:id="textMaxPrice" layoutX="135.0" layoutY="-7.0" maxWidth="1.7976931348623157E308" onAction="#textMaxPriceOnAction" prefHeight="51.0" prefWidth="397.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="0.0" />
+                                          <TextField fx:id="textMaxPrice" layoutX="135.0" layoutY="-7.0" maxWidth="1.7976931348623157E308" onAction="#textMaxPriceOnAction" onKeyReleased="#textMaxPriceOnAction" prefHeight="51.0" prefWidth="397.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
                                     <HBox maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="532.0">
                                        <children>
-                                          <ToggleButton fx:id="toggleEasy" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#toggleDiffOnAction" prefHeight="51.0" styleClass="easy" text="Lätt" HBox.hgrow="ALWAYS">
-                                             <toggleGroup>
-                                                <ToggleGroup fx:id="diff" />
-                                             </toggleGroup>
-                                          </ToggleButton>
-                                          <ToggleButton fx:id="toggleMedium" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#toggleDiffOnAction" styleClass="medium" text="Mellan" toggleGroup="$diff" HBox.hgrow="ALWAYS" />
-                                          <ToggleButton fx:id="toggleHard" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#toggleDiffOnAction" prefHeight="51.0" styleClass="hard" text="Svår" toggleGroup="$diff" HBox.hgrow="ALWAYS" />
+                                          <ToggleButton fx:id="toggleEasy" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#toggleDiffOnAction" prefHeight="51.0" styleClass="easy" text="Lätt" HBox.hgrow="ALWAYS" />
+                                          <ToggleButton fx:id="toggleMedium" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#toggleDiffOnAction" styleClass="medium" text="Mellan" HBox.hgrow="ALWAYS" />
+                                          <ToggleButton fx:id="toggleHard" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#toggleDiffOnAction" prefHeight="51.0" styleClass="hard" text="Svår" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
                                     <AnchorPane prefHeight="102.0" prefWidth="532.0">
@@ -68,12 +64,39 @@
                               </VBox>
                            </children>
                         </AnchorPane>
-                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0" />
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
+                           <children>
+                              <ListView fx:id="listSearchResult" layoutX="164.0" layoutY="161.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                           </children></AnchorPane>
                     </items>
                   </SplitPane>
                </children>
             </AnchorPane>
-          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0" />
+          <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
+               <children>
+                  <ImageView fitHeight="334.0" fitWidth="1342.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                     <image>
+                        <Image url="@../../res/img/default-food.jpg" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="22.0" layoutY="354.0" text="Grillad kyckling med mozarellapinnar">
+                     <font>
+                        <Font size="57.0" />
+                     </font>
+                  </Label>
+                  <ImageView fitHeight="44.0" fitWidth="46.0" layoutX="1038.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../res/img/food.png" />
+                     </image>
+                  </ImageView>
+                  <ImageView fitHeight="48.0" fitWidth="44.0" layoutX="1038.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../res/img/time.png" />
+                     </image>
+                  </ImageView>
+                  <Label layoutX="1105.0" layoutY="350.0" text="3-4 portioner" />
+                  <Label layoutX="1105.0" layoutY="401.0" text="45 minuter" />
+               </children></AnchorPane>
         </items>
       </SplitPane>
    </children>
