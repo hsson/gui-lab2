@@ -56,7 +56,7 @@
                                     </HBox>
                                     <AnchorPane prefHeight="102.0" prefWidth="532.0">
                                        <children>
-                                          <CheckBox fx:id="checkMaxTime" alignment="CENTER" layoutX="22.0" layoutY="-3.0" mnemonicParsing="false" text="Maxtid (minuter)" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                          <CheckBox fx:id="checkMaxTime" alignment="CENTER" layoutX="22.0" layoutY="-3.0" mnemonicParsing="false" onAction="#checkMaxTimeOnAction" selected="true" text="Maxtid (minuter)" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                                           <Slider fx:id="sliderMaxTime" layoutY="49.0" majorTickUnit="20.0" max="150.0" maxWidth="1.7976931348623157E308" min="10.0" minorTickCount="1" prefHeight="28.0" prefWidth="533.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                                        </children>
                                     </AnchorPane>

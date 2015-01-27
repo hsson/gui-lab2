@@ -4,6 +4,7 @@ import com.sun.javafx.collections.ObservableListWrapper;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
 
@@ -12,18 +13,28 @@ import java.util.List;
 import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
-    public ComboBox<String> comboCuisine;
-    public ComboBox<String> comboIngredient;
-    public TextField textMaxPrice;
-    public Slider sliderMaxTime;
-    public ToggleButton toggleEasy;
-    public ToggleButton toggleMedium;
-    public ToggleButton toggleHard;
-    public CheckBox checkMaxTime;
-    public ListView<String> listSearchResult;
+    @FXML
+    private ComboBox<String> comboCuisine;
+    @FXML
+    private ComboBox<String> comboIngredient;
+    @FXML
+    private TextField textMaxPrice;
+    @FXML
+    private Slider sliderMaxTime;
+    @FXML
+    private ToggleButton toggleEasy;
+    @FXML
+    private ToggleButton toggleMedium;
+    @FXML
+    private ToggleButton toggleHard;
+    @FXML
+    private CheckBox checkMaxTime;
+    @FXML
+    private ListView<String> listSearchResult;
 
     private Model model = new Model();
     private int oldSliderVal;
+    private String oldMaxPriceVal = "";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -48,7 +59,15 @@ public class Controller implements Initializable {
     }
 
     public void textMaxPriceOnAction() {
-        System.out.println(textMaxPrice.getText());
+        if (textMaxPrice.getText().trim().equals("")) {
+            //TODO: if empty set null in model
+        } else if (textMaxPrice.getText().matches("[0-9]+")) {
+            System.out.println(textMaxPrice.getText());
+            oldMaxPriceVal = textMaxPrice.getText();
+        } else {
+            textMaxPrice.setText(oldMaxPriceVal);
+            textMaxPrice.positionCaret(textMaxPrice.getLength());
+        }
     }
 
     public void toggleDiffOnAction(ActionEvent event) {
@@ -59,6 +78,16 @@ public class Controller implements Initializable {
     public void sliderMaxTimeOnSelected(int value) {
         if (checkMaxTime.isSelected()) {
             System.out.println(value);
+        }
+    }
+
+    public void checkMaxTimeOnAction() {
+        if (checkMaxTime.isSelected()) {
+            sliderMaxTime.setDisable(false);
+            //Convert to int
+            System.out.println(sliderMaxTime.getValue());
+        } else {
+            sliderMaxTime.setDisable(true);
         }
     }
 
