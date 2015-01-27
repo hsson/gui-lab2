@@ -47,6 +47,23 @@
                                           <TextField alignment="CENTER_RIGHT" layoutX="96.0" layoutY="-7.0" maxWidth="1.7976931348623157E308" prefHeight="51.0" prefWidth="438.0" AnchorPane.leftAnchor="94.0" AnchorPane.rightAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
+                                    <HBox maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="532.0">
+                                       <children>
+                                          <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="51.0" styleClass="easy" text="Lätt" HBox.hgrow="ALWAYS">
+                                             <toggleGroup>
+                                                <ToggleGroup fx:id="diff" />
+                                             </toggleGroup>
+                                          </ToggleButton>
+                                          <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" styleClass="medium" text="Mellan" toggleGroup="$diff" HBox.hgrow="ALWAYS" />
+                                          <ToggleButton maxWidth="1.7976931348623157E308" mnemonicParsing="false" prefHeight="51.0" styleClass="hard" text="Svår" toggleGroup="$diff" HBox.hgrow="ALWAYS" />
+                                       </children>
+                                    </HBox>
+                                    <AnchorPane prefHeight="200.0" prefWidth="200.0">
+                                       <children>
+                                          <Slider layoutY="35.0" maxWidth="1.7976931348623157E308" prefHeight="28.0" prefWidth="533.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                          <Label alignment="CENTER" contentDisplay="BOTTOM" maxWidth="1.7976931348623157E308" prefHeight="35.0" prefWidth="416.0" text="Maxtid" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                       </children>
+                                    </AnchorPane>
                                  </children>
                               </VBox>
                            </children>
