@@ -4,12 +4,8 @@ import com.sun.javafx.collections.ObservableListWrapper;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Slider;
-import javafx.scene.control.TextField;
-import javafx.scene.control.ToggleButton;
+import javafx.scene.control.*;
 
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -22,6 +18,7 @@ public class Controller implements Initializable {
     public ToggleButton toggleEasy;
     public ToggleButton toggleMedium;
     public ToggleButton toggleHard;
+    public CheckBox checkMaxTime;
 
     private Model model = new Model();
     private int oldSliderVal;
@@ -30,17 +27,7 @@ public class Controller implements Initializable {
     public void initialize(URL location, ResourceBundle resources) {
         comboCuisine.setItems(new ObservableListWrapper<String>(model.getCuisineList()));
         comboIngredient.setItems(new ObservableListWrapper<String>(model.getIngredientList()));
-
-        sliderMaxTime.valueProperty().addListener(new ChangeListener<Number>() {
-            public void changed(ObservableValue<? extends Number> ov,
-                                Number old_val, Number new_val) {
-                int val = new_val.intValue();
-                if (val % 10 == 0 && val != oldSliderVal) {
-                    sliderMaxTimeOnSelected(val);
-                    oldSliderVal = val;
-                }
-            }
-        });
+        sliderMaxTime.valueProperty().addListener(new MaxTimeListener());
     }
 
     public void comboCuisineOnAction() {
@@ -61,6 +48,19 @@ public class Controller implements Initializable {
     }
 
     public void sliderMaxTimeOnSelected(int value) {
-        System.out.println(value);
+        if (checkMaxTime.isSelected()) {
+            System.out.println(value);
+        }
+    }
+
+    private class MaxTimeListener implements ChangeListener<Number> {
+        @Override
+        public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
+            int val = newValue.intValue();
+            if (val % 10 == 0 && val != oldSliderVal) {
+                sliderMaxTimeOnSelected(val);
+                oldSliderVal = val;
+            }
+        }
     }
 }

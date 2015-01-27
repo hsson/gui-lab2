@@ -13,6 +13,7 @@ public class Model {
     }
 
     private void initCuisineList() {
+        cuisineList.add("Alla");
         cuisineList.add("Sverige");
         cuisineList.add("Grekland");
         cuisineList.add("Indien");
@@ -22,6 +23,7 @@ public class Model {
     }
 
     private void initIngredientList() {
+        ingredientList.add("Alla");
         ingredientList.add("Kött");
         ingredientList.add("Fisk");
         ingredientList.add("Kyckling");
