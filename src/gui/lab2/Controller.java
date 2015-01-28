@@ -3,7 +3,6 @@ package gui.lab2;
 import com.sun.javafx.collections.ObservableListWrapper;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
@@ -11,8 +10,6 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 public class Controller implements Initializable {
     @FXML
@@ -36,7 +33,8 @@ public class Controller implements Initializable {
 
     private Model model = new Model();
     private int oldSliderVal;
-    private String oldMaxPriceVal = "";
+    private int oldMaxPriceVal = 0;
+    private String oldMaxPriceString = "";
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -63,19 +61,31 @@ public class Controller implements Initializable {
     }
 
     public void textMaxPriceOnAction() {
-        if (textMaxPrice.getText().trim().equals("")) {
-            oldMaxPriceVal = "";
+        String maxPrice = textMaxPrice.getText();
+        if (maxPrice.trim().equals("") && !maxPrice.trim().equals(oldMaxPriceString)) {
+            oldMaxPriceString = "";
             model.setMaxPriceOption(0);
             System.out.println("maxPrice = " + 0);
-        } else if (textMaxPrice.getText().matches("[0-9]+")) {
-            model.setMaxPriceOption(Integer.parseInt(textMaxPrice.getText()));
-            System.out.println("maxPrice = " + textMaxPrice.getText());
-            oldMaxPriceVal = textMaxPrice.getText();
+        } else if (maxPrice.matches("[0-9]+")) {
+            try {
+                if (oldMaxPriceVal != (Integer.parseInt(maxPrice))) {
+                    model.setMaxPriceOption(Integer.parseInt(maxPrice));
+                    System.out.println("maxPrice = " + maxPrice);
+                    oldMaxPriceString = maxPrice;
+                    oldMaxPriceVal = Integer.parseInt(maxPrice);
+                }
+            } catch (NumberFormatException e) {
+                handleWrongMaxPriceInput();
+            }
         } else {
-            System.out.println("maxPrice = fel");
-            textMaxPrice.setText(oldMaxPriceVal);
-            textMaxPrice.positionCaret(textMaxPrice.getLength());
+            handleWrongMaxPriceInput();
         }
+    }
+
+    private void handleWrongMaxPriceInput() {
+        System.out.println("maxPrice = fel");
+        textMaxPrice.setText(oldMaxPriceString);
+        textMaxPrice.positionCaret(textMaxPrice.getLength());
     }
 
     public void toggleEasyOnAction() {
