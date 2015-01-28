@@ -49,9 +49,9 @@
                                     </AnchorPane>
                                     <HBox maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="532.0">
                                        <children>
-                                          <ToggleButton fx:id="toggleEasy" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#toggleDiffOnAction" prefHeight="51.0" styleClass="easy" text="Lätt" HBox.hgrow="ALWAYS" />
-                                          <ToggleButton fx:id="toggleMedium" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#toggleDiffOnAction" styleClass="medium" text="Mellan" HBox.hgrow="ALWAYS" />
-                                          <ToggleButton fx:id="toggleHard" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#toggleDiffOnAction" prefHeight="51.0" styleClass="hard" text="Svår" HBox.hgrow="ALWAYS" />
+                                          <ToggleButton fx:id="toggleEasy" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#toggleEasyOnAction" prefHeight="51.0" styleClass="easy" text="Lätt" HBox.hgrow="ALWAYS" />
+                                          <ToggleButton fx:id="toggleMedium" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#toggleMediumOnAction" styleClass="medium" text="Mellan" HBox.hgrow="ALWAYS" />
+                                          <ToggleButton fx:id="toggleHard" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#toggleHardOnAction" prefHeight="51.0" styleClass="hard" text="Svår" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
                                     <AnchorPane prefHeight="102.0" prefWidth="532.0">

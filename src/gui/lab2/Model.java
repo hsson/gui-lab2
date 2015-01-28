@@ -7,6 +7,15 @@ public class Model {
     private List<String> cuisineList = new ArrayList<String>();
     private List<String> ingredientList = new ArrayList<String>();
 
+    private String cuisineOption;
+    private String ingredientOption;
+    private int maxPriceOption;
+    private int maxTimeOption;
+    private boolean easyOption;
+    private boolean mediumOption;
+    private boolean hardOption;
+
+
     public Model() {
         initCuisineList();
         initIngredientList();
@@ -28,6 +37,34 @@ public class Model {
         ingredientList.add("Fisk");
         ingredientList.add("Kyckling");
         ingredientList.add("Vegetarisk");
+    }
+
+    public void setCuisineOption(String cuisineOption) {
+        this.cuisineOption = cuisineOption;
+    }
+
+    public void setIngredientOption(String ingredientOption) {
+        this.ingredientOption = ingredientOption;
+    }
+
+    public void setMaxPriceOption(int maxPriceOption) {
+        this.maxPriceOption = maxPriceOption;
+    }
+
+    public void setMaxTimeOption(int maxTimeOption) {
+        this.maxTimeOption = maxTimeOption;
+    }
+
+    public void setEasyOption(boolean easyOption) {
+        this.easyOption = easyOption;
+    }
+
+    public void setMediumOption(boolean mediumOption) {
+        this.mediumOption = mediumOption;
+    }
+
+    public void setHardOption(boolean hardOption) {
+        this.hardOption = hardOption;
     }
 
     public List<String> getCuisineList() {

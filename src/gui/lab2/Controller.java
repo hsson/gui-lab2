@@ -11,6 +11,8 @@ import javafx.scene.control.*;
 import java.net.URL;
 import java.util.List;
 import java.util.ResourceBundle;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class Controller implements Initializable {
     @FXML
@@ -51,43 +53,65 @@ public class Controller implements Initializable {
     }
 
     public void comboCuisineOnAction() {
-        System.out.println(comboCuisine.getValue());
+        model.setCuisineOption(comboCuisine.getValue());
+        System.out.println("cuisine = " + comboCuisine.getValue());
     }
 
     public void comboIngredientOnAction() {
-        System.out.println(comboIngredient.getValue());
+        model.setIngredientOption(comboIngredient.getValue());
+        System.out.println("ingredient = " + comboIngredient.getValue());
     }
 
     public void textMaxPriceOnAction() {
         if (textMaxPrice.getText().trim().equals("")) {
-            //TODO: if empty set null in model
+            oldMaxPriceVal = "";
+            model.setMaxPriceOption(0);
+            System.out.println("maxPrice = " + 0);
         } else if (textMaxPrice.getText().matches("[0-9]+")) {
-            System.out.println(textMaxPrice.getText());
+            model.setMaxPriceOption(Integer.parseInt(textMaxPrice.getText()));
+            System.out.println("maxPrice = " + textMaxPrice.getText());
             oldMaxPriceVal = textMaxPrice.getText();
         } else {
+            System.out.println("maxPrice = fel");
             textMaxPrice.setText(oldMaxPriceVal);
             textMaxPrice.positionCaret(textMaxPrice.getLength());
         }
     }
 
-    public void toggleDiffOnAction(ActionEvent event) {
-        ToggleButton tb = (ToggleButton) event.getSource();
-        System.out.println(tb.getText());
+    public void toggleEasyOnAction() {
+        model.setEasyOption(toggleEasy.isSelected());
+        System.out.println("easy = " + toggleEasy.isSelected());
+    }
+
+    public void toggleMediumOnAction() {
+        model.setMediumOption(toggleMedium.isSelected());
+        System.out.println("medium = " + toggleMedium.isSelected());
+    }
+
+    public void toggleHardOnAction() {
+        model.setHardOption(toggleHard.isSelected());
+        System.out.println("hard = " + toggleHard.isSelected());
     }
 
     public void sliderMaxTimeOnSelected(int value) {
         if (checkMaxTime.isSelected()) {
-            System.out.println(value);
+            model.setMaxTimeOption(value);
+            System.out.println("maxTime = " + value);
+        } else {
+            model.setMaxTimeOption(0);
+            System.out.println("maxTime = " + 0);
         }
     }
 
     public void checkMaxTimeOnAction() {
         if (checkMaxTime.isSelected()) {
             sliderMaxTime.setDisable(false);
-            //Convert to int
-            System.out.println(sliderMaxTime.getValue());
+            System.out.println("maxTime = " + (int) sliderMaxTime.getValue());
+            model.setMaxTimeOption((int) sliderMaxTime.getValue());
         } else {
             sliderMaxTime.setDisable(true);
+            model.setMaxTimeOption(0);
+            System.out.println("maxTime = " + 0);
         }
     }
 
