@@ -1,5 +1,9 @@
 package gui.lab2;
 
+import se.chalmers.ait.dat215.lab2.Recipe;
+import se.chalmers.ait.dat215.lab2.RecipeDatabase;
+import se.chalmers.ait.dat215.lab2.SearchFilter;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,10 +19,20 @@ public class Model {
     private boolean mediumOption;
     private boolean hardOption;
 
+    RecipeDatabase db = RecipeDatabase.getSharedInstance();
+
 
     public Model() {
         initCuisineList();
         initIngredientList();
+    }
+
+    public void search() {
+        List<Recipe> res = db.search(new SearchFilter(null, 0, "Sverige", 0, null));
+
+        for (Recipe r : res) {
+            System.out.println(r.getCuisine() + " | " + r.getDifficulty() + " | " + r.getMatch());
+        }
     }
 
     private void initCuisineList() {

@@ -53,6 +53,7 @@ public class Controller implements Initializable {
     public void comboCuisineOnAction() {
         model.setCuisineOption(comboCuisine.getValue());
         System.out.println("cuisine = " + comboCuisine.getValue());
+        model.search();
     }
 
     public void comboIngredientOnAction() {
