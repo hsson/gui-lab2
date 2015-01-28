@@ -3,9 +3,11 @@ package gui.lab2;
 import com.sun.javafx.collections.ObservableListWrapper;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
+import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import se.chalmers.ait.dat215.lab2.Recipe;
 
 import java.net.URL;
 import java.util.List;
@@ -41,24 +43,22 @@ public class Controller implements Initializable {
         comboCuisine.setItems(new ObservableListWrapper<String>(model.getCuisineList()));
         comboIngredient.setItems(new ObservableListWrapper<String>(model.getIngredientList()));
         sliderMaxTime.valueProperty().addListener(new MaxTimeListener());
+    }
 
-        // List dummy data
-        List<String> test = model.getCuisineList();
-        test.addAll(model.getIngredientList());
-        test.addAll(test);
-
-        listSearchResult.setItems(new ObservableListWrapper<String>(test));
+    private void updateSearchResult() {
+        listSearchResult.setItems(new ObservableListWrapper<String>(model.search()));
     }
 
     public void comboCuisineOnAction() {
         model.setCuisineOption(comboCuisine.getValue());
         System.out.println("cuisine = " + comboCuisine.getValue());
-        model.search();
+        updateSearchResult();
     }
 
     public void comboIngredientOnAction() {
         model.setIngredientOption(comboIngredient.getValue());
         System.out.println("ingredient = " + comboIngredient.getValue());
+        updateSearchResult();
     }
 
     public void textMaxPriceOnAction() {
@@ -67,6 +67,7 @@ public class Controller implements Initializable {
             oldMaxPriceString = "";
             model.setMaxPriceOption(0);
             System.out.println("maxPrice = " + 0);
+            updateSearchResult();
         } else if (maxPrice.matches("[0-9]+")) {
             try {
                 if (oldMaxPriceVal != (Integer.parseInt(maxPrice))) {
@@ -74,6 +75,7 @@ public class Controller implements Initializable {
                     System.out.println("maxPrice = " + maxPrice);
                     oldMaxPriceString = maxPrice;
                     oldMaxPriceVal = Integer.parseInt(maxPrice);
+                    updateSearchResult();
                 }
             } catch (NumberFormatException e) {
                 handleWrongMaxPriceInput();
@@ -83,25 +85,22 @@ public class Controller implements Initializable {
         }
     }
 
-    private void handleWrongMaxPriceInput() {
-        System.out.println("maxPrice = fel");
-        textMaxPrice.setText(oldMaxPriceString);
-        textMaxPrice.positionCaret(textMaxPrice.getLength());
-    }
-
     public void toggleEasyOnAction() {
         model.setEasyOption(toggleEasy.isSelected());
         System.out.println("easy = " + toggleEasy.isSelected());
+        updateSearchResult();
     }
 
     public void toggleMediumOnAction() {
         model.setMediumOption(toggleMedium.isSelected());
         System.out.println("medium = " + toggleMedium.isSelected());
+        updateSearchResult();
     }
 
     public void toggleHardOnAction() {
         model.setHardOption(toggleHard.isSelected());
         System.out.println("hard = " + toggleHard.isSelected());
+        updateSearchResult();
     }
 
     public void sliderMaxTimeOnSelected(int value) {
@@ -112,6 +111,8 @@ public class Controller implements Initializable {
             model.setMaxTimeOption(0);
             System.out.println("maxTime = " + 0);
         }
+
+        updateSearchResult();
     }
 
     public void checkMaxTimeOnAction() {
@@ -124,6 +125,8 @@ public class Controller implements Initializable {
             model.setMaxTimeOption(0);
             System.out.println("maxTime = " + 0);
         }
+
+        updateSearchResult();
     }
 
     private class MaxTimeListener implements ChangeListener<Number> {
@@ -135,5 +138,11 @@ public class Controller implements Initializable {
                 oldSliderVal = val;
             }
         }
+    }
+
+    private void handleWrongMaxPriceInput() {
+        System.out.println("maxPrice = fel");
+        textMaxPrice.setText(oldMaxPriceString);
+        textMaxPrice.positionCaret(textMaxPrice.getLength());
     }
 }

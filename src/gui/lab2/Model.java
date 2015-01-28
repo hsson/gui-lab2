@@ -1,11 +1,11 @@
 package gui.lab2;
 
 import se.chalmers.ait.dat215.lab2.Recipe;
+import se.chalmers.ait.dat215.lab2.RecipeComparator;
 import se.chalmers.ait.dat215.lab2.RecipeDatabase;
 import se.chalmers.ait.dat215.lab2.SearchFilter;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 public class Model {
     private List<String> cuisineList = new ArrayList<String>();
@@ -19,6 +19,8 @@ public class Model {
     private boolean mediumOption;
     private boolean hardOption;
 
+    private List<Recipe> allRecipes = new ArrayList<Recipe>();
+
     RecipeDatabase db = RecipeDatabase.getSharedInstance();
 
 
@@ -27,12 +29,30 @@ public class Model {
         initIngredientList();
     }
 
-    public void search() {
-        List<Recipe> res = db.search(new SearchFilter(null, 0, "Sverige", 0, null));
+    public List<String> search() {
+        SortedSet<Recipe> res = new TreeSet<>(new RecipeComparator());
 
-        for (Recipe r : res) {
-            System.out.println(r.getCuisine() + " | " + r.getDifficulty() + " | " + r.getMatch());
+        if (easyOption) {
+            res.addAll(db.search(new SearchFilter("Lätt", maxTimeOption, cuisineOption, maxPriceOption, ingredientOption)));
         }
+        if (mediumOption) {
+            res.addAll(db.search(new SearchFilter("Mellan", maxTimeOption, cuisineOption, maxPriceOption, ingredientOption)));
+        }
+        if (hardOption) {
+            res.addAll(db.search(new SearchFilter("Svår", maxTimeOption, cuisineOption, maxPriceOption, ingredientOption)));
+        }
+        if (!easyOption && !mediumOption && !hardOption) {
+            res.addAll(db.search(new SearchFilter(null, maxTimeOption, cuisineOption, maxPriceOption, ingredientOption)));
+        }
+
+        allRecipes.addAll(res);
+
+        List<String> finalRes = new ArrayList<String>();
+        for (Recipe r : res) {
+            finalRes.add(r.getName());
+        }
+
+        return finalRes;
     }
 
     private void initCuisineList() {
