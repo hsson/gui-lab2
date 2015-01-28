@@ -7,6 +7,7 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import se.chalmers.ait.dat215.lab2.Ingredient;
 import se.chalmers.ait.dat215.lab2.Recipe;
 
 import java.net.URL;
@@ -32,6 +33,17 @@ public class Controller implements Initializable {
     private CheckBox checkMaxTime;
     @FXML
     private ListView<String> listSearchResult;
+    @FXML
+    private TextArea textIngredients;
+    @FXML
+    private TextArea textDescription;
+    @FXML
+    private Label labelName;
+    @FXML
+    private Label labelTime;
+    @FXML
+    private Label labelServings;
+
 
     private Model model = new Model();
     private int oldSliderVal;
@@ -43,10 +55,39 @@ public class Controller implements Initializable {
         comboCuisine.setItems(new ObservableListWrapper<String>(model.getCuisineList()));
         comboIngredient.setItems(new ObservableListWrapper<String>(model.getIngredientList()));
         sliderMaxTime.valueProperty().addListener(new MaxTimeListener());
+
+        listSearchResult.getSelectionModel().selectedItemProperty().addListener(new ChangeListener<String>() {
+
+            @Override
+            public void changed(ObservableValue<? extends String> observable, String oldValue, String newValue) {
+                listSearchResultOnClicked();
+            }
+        });
     }
 
     private void updateSearchResult() {
-        listSearchResult.setItems(new ObservableListWrapper<String>(model.search()));
+        ObservableList<String> result = new ObservableListWrapper<String>(model.search());
+        listSearchResult.setItems(result);
+        updateDetailView(model.getRecipe(result.get(0)));
+    }
+
+    private void updateDetailView(Recipe r) {
+        labelName.setText(r.getName());
+        labelServings.setText(r.getServings() + " portioner");
+        labelTime.setText(r.getTime() + " minuter");
+        textDescription.setText(r.getDescription());
+        textIngredients.setText("");
+        for (Ingredient i : r.getIngredients()) {
+            textIngredients.appendText(i.getAmount() + " " + i.getUnit() + " " + i.getName() + "\n");
+        }
+    }
+
+    private void listSearchResultOnClicked() {
+        String selected = listSearchResult.getSelectionModel().getSelectedItem();
+        Recipe recipe = model.getRecipe(selected);
+        if (recipe != null) {
+            updateDetailView(recipe);
+        }
     }
 
     public void comboCuisineOnAction() {

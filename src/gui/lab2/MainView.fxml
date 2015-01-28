@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.web.*?>
 <?import javafx.geometry.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.image.*?>
@@ -74,28 +75,41 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <ImageView fitHeight="334.0" fitWidth="1342.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+                  <ImageView fitHeight="334.0" fitWidth="1342.0" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <image>
                         <Image url="@../../res/img/default-food.jpg" />
                      </image>
                   </ImageView>
-                  <Label layoutX="22.0" layoutY="354.0" text="Grillad kyckling med mozarellapinnar">
+                  <Label fx:id="labelName" layoutX="22.0" layoutY="354.0" prefHeight="84.0" prefWidth="996.0" text="Grillad kyckling med mozarellapinnar" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="354.0">
                      <font>
                         <Font size="57.0" />
                      </font>
                   </Label>
-                  <ImageView fitHeight="44.0" fitWidth="46.0" layoutX="1038.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="44.0" fitWidth="46.0" layoutX="1038.0" layoutY="345.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="1038.0" AnchorPane.topAnchor="345.0">
                      <image>
                         <Image url="@../../res/img/food.png" />
                      </image>
                   </ImageView>
-                  <ImageView fitHeight="48.0" fitWidth="44.0" layoutX="1038.0" layoutY="396.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="48.0" fitWidth="44.0" layoutX="1038.0" layoutY="397.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="1038.0" AnchorPane.topAnchor="397.0">
                      <image>
                         <Image url="@../../res/img/time.png" />
                      </image>
                   </ImageView>
-                  <Label layoutX="1105.0" layoutY="350.0" text="3-4 portioner" />
-                  <Label layoutX="1105.0" layoutY="401.0" text="45 minuter" />
+                  <Label fx:id="labelServings" layoutX="1102.0" layoutY="350.0" prefHeight="35.0" prefWidth="226.0" text="3-4 portioner" AnchorPane.leftAnchor="1102.0" AnchorPane.topAnchor="350.0" />
+                  <Label fx:id="labelTime" layoutX="1102.0" layoutY="402.0" prefHeight="35.0" prefWidth="226.0" text="45 minuter" AnchorPane.leftAnchor="1102.0" AnchorPane.topAnchor="402.0" />
+                  <Label layoutX="22.0" layoutY="477.0" text="Ingredienser">
+                     <font>
+                        <Font size="43.0" />
+                     </font>
+                  </Label>
+                  <Label layoutX="453.0" layoutY="477.0" text="Beskrivning">
+                     <font>
+                        <Font size="43.0" />
+                     </font>
+                  </Label>
+                  <TextArea fx:id="textIngredients" editable="false" layoutX="36.0" layoutY="541.0" prefHeight="558.0" prefWidth="397.0" wrapText="true" />
+                  <Separator layoutX="433.0" layoutY="477.0" orientation="VERTICAL" prefHeight="640.0" prefWidth="0.0" />
+                  <TextArea fx:id="textDescription" editable="false" layoutX="453.0" layoutY="541.0" prefHeight="550.0" prefWidth="872.0" wrapText="true" />
                </children></AnchorPane>
         </items>
       </SplitPane>

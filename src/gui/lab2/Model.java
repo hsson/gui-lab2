@@ -55,6 +55,15 @@ public class Model {
         return finalRes;
     }
 
+    public Recipe getRecipe(String name) {
+        for (Recipe r : allRecipes) {
+            if (r.getName().equals(name)) {
+                return r;
+            }
+        }
+        return null;
+    }
+
     private void initCuisineList() {
         cuisineList.add("Alla");
         cuisineList.add("Sverige");
