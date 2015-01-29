@@ -36,11 +36,6 @@
                                           <Font size="36.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox fx:id="comboCuisine" maxWidth="1.7976931348623157E308" onAction="#comboCuisineOnAction" prefHeight="51.0" prefWidth="1.0E22" promptText="Kök">
-                                       <VBox.margin>
-                                          <Insets />
-                                       </VBox.margin>
-                                    </ComboBox>
                                     <ComboBox fx:id="comboIngredient" maxWidth="1.7976931348623157E308" onAction="#comboIngredientOnAction" prefHeight="51.0" prefWidth="403.0" promptText="Huvudingrediens" />
                                     <AnchorPane prefHeight="45.0" prefWidth="532.0">
                                        <children>
@@ -61,13 +56,14 @@
                                           <Slider fx:id="sliderMaxTime" layoutY="49.0" majorTickUnit="20.0" max="150.0" maxWidth="1.7976931348623157E308" min="10.0" minorTickCount="1" prefHeight="28.0" prefWidth="533.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
+                                    <ComboBox fx:id="comboCuisine" maxWidth="1.7976931348623157E308" onAction="#comboCuisineOnAction" prefHeight="51.0" prefWidth="1.0E22" promptText="Kök" />
                                  </children>
                               </VBox>
                            </children>
                         </AnchorPane>
                       <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="160.0">
                            <children>
-                              <ListView fx:id="listSearchResult" layoutX="164.0" layoutY="161.0" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
+                              <ListView fx:id="listSearchResult" prefHeight="200.0" prefWidth="200.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0" />
                            </children></AnchorPane>
                     </items>
                   </SplitPane>

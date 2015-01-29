@@ -7,9 +7,14 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.control.cell.ComboBoxListCell;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
+import javafx.scene.layout.HBox;
+import javafx.scene.layout.VBox;
+import javafx.util.Callback;
 import se.chalmers.ait.dat215.lab2.Ingredient;
 import se.chalmers.ait.dat215.lab2.Recipe;
 
@@ -72,6 +77,15 @@ public class Controller implements Initializable {
                 listSearchResultOnClicked();
             }
         });
+
+        listSearchResult.setCellFactory(new Callback<ListView<String>,
+                                    ListCell<String>>() {
+                                @Override
+                                public ListCell<String> call(ListView<String> list) {
+                                    return new RecipeListCell();
+                                }
+                            }
+        );
     }
 
     private void updateSearchResult() {
@@ -90,7 +104,7 @@ public class Controller implements Initializable {
         textDescription.setText(r.getDescription());
         textIngredients.setText("");
         for (Ingredient i : r.getIngredients()) {
-            textIngredients.appendText(i.getAmount() + " " + i.getUnit() + "\t" + i.getName() + "\n");
+            textIngredients.appendText(i.getAmount() + " " + i.getUnit() + " " + i.getName() + "\n");
         }
 
         labelVeg.setVisible(r.getMainIngredient().equals("Vegetarisk"));
@@ -195,6 +209,12 @@ public class Controller implements Initializable {
         updateSearchResult();
     }
 
+    private void handleWrongMaxPriceInput() {
+        System.out.println("maxPrice = fel");
+        textMaxPrice.setText(oldMaxPriceString);
+        textMaxPrice.positionCaret(textMaxPrice.getLength());
+    }
+
     private class MaxTimeListener implements ChangeListener<Number> {
         @Override
         public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
@@ -206,9 +226,35 @@ public class Controller implements Initializable {
         }
     }
 
-    private void handleWrongMaxPriceInput() {
-        System.out.println("maxPrice = fel");
-        textMaxPrice.setText(oldMaxPriceString);
-        textMaxPrice.positionCaret(textMaxPrice.getLength());
+    private class RecipeListCell extends ListCell<String> {
+        @Override
+        public void updateItem(String item, boolean empty) {
+            super.updateItem(item, empty);
+            if (item != null) {
+                Recipe r = model.getRecipe(item);
+                Label name = new Label(r.getName());
+                ProgressBar bar = new ProgressBar();
+                if (r.getDifficulty().equals("Lätt")) {
+                    bar.setStyle("-fx-accent: darkseagreen;");
+                    bar.setProgress(0.33);
+                } else if (r.getDifficulty().equals("Mellan")) {
+                    bar.setStyle("-fx-accent: #fab367;");
+                    bar.setProgress(0.67);
+                } else if (r.getDifficulty().equals("Svår")) {
+                    bar.setStyle("-fx-accent: indianred; ");
+                    bar.setProgress(1);
+                }
+                ImageView timeIcon = new ImageView("/res/img/time.png");
+                timeIcon.setFitHeight(32);
+                timeIcon.setFitWidth(32);
+                Label time = new Label(r.getTime() + " minuter");
+                VBox container = new VBox();
+                HBox details = new HBox();
+                details.setSpacing(16);
+                details.getChildren().addAll(bar, timeIcon, time);
+                container.getChildren().addAll(name, details);
+                setGraphic(container);
+            }
+        }
     }
 }
