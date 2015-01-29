@@ -7,6 +7,9 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
+import javafx.scene.image.ImageView;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundFill;
 import se.chalmers.ait.dat215.lab2.Ingredient;
 import se.chalmers.ait.dat215.lab2.Recipe;
 
@@ -43,6 +46,12 @@ public class Controller implements Initializable {
     private Label labelTime;
     @FXML
     private Label labelServings;
+    @FXML
+    private Label labelVeg;
+    @FXML
+    private ImageView imgVeg;
+    @FXML
+    private ProgressBar progressDiff;
 
 
     private Model model = new Model();
@@ -78,7 +87,20 @@ public class Controller implements Initializable {
         textDescription.setText(r.getDescription());
         textIngredients.setText("");
         for (Ingredient i : r.getIngredients()) {
-            textIngredients.appendText(i.getAmount() + " " + i.getUnit() + " " + i.getName() + "\n");
+            textIngredients.appendText(i.getAmount() + " " + i.getUnit() + "\t" + i.getName() + "\n");
+        }
+
+        labelVeg.setVisible(r.getMainIngredient().equals("Vegetarisk"));
+        imgVeg.setVisible(r.getMainIngredient().equals("Vegetarisk"));
+        if (r.getDifficulty().equals("Lätt")) {
+            progressDiff.setStyle("-fx-accent: darkseagreen;");
+            progressDiff.setProgress(0.33);
+        } else if (r.getDifficulty().equals("Mellan")) {
+            progressDiff.setStyle("-fx-accent: lightgoldenrodyellow;");
+            progressDiff.setProgress(0.67);
+        } else if (r.getDifficulty().equals("Svår")) {
+            progressDiff.setStyle("-fx-accent: indianred; ");
+            progressDiff.setProgress(1);
         }
     }
 

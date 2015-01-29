@@ -83,10 +83,18 @@ public class Model {
     }
 
     public void setCuisineOption(String cuisineOption) {
+        if (cuisineOption.equals("Alla")) {
+            this.cuisineOption = null;
+            return;
+        }
         this.cuisineOption = cuisineOption;
     }
 
     public void setIngredientOption(String ingredientOption) {
+        if (ingredientOption.equals("Alla")) {
+            this.ingredientOption = null;
+            return;
+        }
         this.ingredientOption = ingredientOption;
     }
 
