@@ -75,6 +75,9 @@ public class Controller implements Initializable {
     }
 
     private void updateSearchResult() {
+        listSearchResult.requestFocus();
+        listSearchResult.getSelectionModel().select(0);
+        listSearchResult.getFocusModel().focus(0);
         ObservableList<String> result = new ObservableListWrapper<String>(model.search());
         listSearchResult.setItems(result);
         updateDetailView(model.getRecipe(result.get(0)));
@@ -96,7 +99,7 @@ public class Controller implements Initializable {
             progressDiff.setStyle("-fx-accent: darkseagreen;");
             progressDiff.setProgress(0.33);
         } else if (r.getDifficulty().equals("Mellan")) {
-            progressDiff.setStyle("-fx-accent: lightgoldenrodyellow;");
+            progressDiff.setStyle("-fx-accent: #fab367;");
             progressDiff.setProgress(0.67);
         } else if (r.getDifficulty().equals("Svår")) {
             progressDiff.setStyle("-fx-accent: indianred; ");
