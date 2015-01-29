@@ -19,6 +19,7 @@ import se.chalmers.ait.dat215.lab2.Ingredient;
 import se.chalmers.ait.dat215.lab2.Recipe;
 
 import java.net.URL;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -42,7 +43,7 @@ public class Controller implements Initializable {
     @FXML
     private ListView<String> listSearchResult;
     @FXML
-    private TextArea textIngredients;
+    private ListView<String> listIngredients;
     @FXML
     private TextArea textDescription;
     @FXML
@@ -86,15 +87,17 @@ public class Controller implements Initializable {
                                 }
                             }
         );
+
+        updateSearchResult();
     }
 
     private void updateSearchResult() {
-        listSearchResult.requestFocus();
-        listSearchResult.getSelectionModel().select(0);
-        listSearchResult.getFocusModel().focus(0);
         ObservableList<String> result = new ObservableListWrapper<String>(model.search());
         listSearchResult.setItems(result);
         updateDetailView(model.getRecipe(result.get(0)));
+        listSearchResult.requestFocus();
+        listSearchResult.getSelectionModel().select(0);
+        listSearchResult.getFocusModel().focus(0);
     }
 
     private void updateDetailView(Recipe r) {
@@ -102,11 +105,12 @@ public class Controller implements Initializable {
         labelServings.setText(r.getServings() + " portioner");
         labelTime.setText(r.getTime() + " minuter");
         textDescription.setText(r.getDescription());
-        textIngredients.setText("");
+        List<String> ingredientList = new ArrayList<String>();
         for (Ingredient i : r.getIngredients()) {
-            textIngredients.appendText(i.getAmount() + " " + i.getUnit() + " " + i.getName() + "\n");
+            ingredientList.add(i.getAmount() + " " + i.getUnit() + " " + i.getName());
         }
-
+        listIngredients.setItems(new ObservableListWrapper<String>(ingredientList));
+        
         labelVeg.setVisible(r.getMainIngredient().equals("Vegetarisk"));
         imgVeg.setVisible(r.getMainIngredient().equals("Vegetarisk"));
         if (r.getDifficulty().equals("Lätt")) {
