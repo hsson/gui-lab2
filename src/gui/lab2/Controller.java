@@ -57,6 +57,8 @@ public class Controller implements Initializable {
     @FXML
     private ImageView imgVeg;
     @FXML
+    private ImageView imgFoodBanner;
+    @FXML
     private ProgressBar progressDiff;
 
 
@@ -110,7 +112,7 @@ public class Controller implements Initializable {
             ingredientList.add(i.getAmount() + " " + i.getUnit() + " " + i.getName());
         }
         listIngredients.setItems(new ObservableListWrapper<String>(ingredientList));
-        
+
         labelVeg.setVisible(r.getMainIngredient().equals("Vegetarisk"));
         imgVeg.setVisible(r.getMainIngredient().equals("Vegetarisk"));
         if (r.getDifficulty().equals("Lätt")) {
@@ -123,6 +125,8 @@ public class Controller implements Initializable {
             progressDiff.setStyle("-fx-accent: indianred; ");
             progressDiff.setProgress(1);
         }
+
+        imgFoodBanner.setImage(new Image("/res/img/" + r.getCuisine() + ".jpg"));
     }
 
     private void listSearchResultOnClicked() {
