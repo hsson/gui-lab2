@@ -7,11 +7,8 @@ import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.*;
-import javafx.scene.control.cell.ComboBoxListCell;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.util.Callback;
@@ -97,7 +94,6 @@ public class Controller implements Initializable {
         ObservableList<String> result = new ObservableListWrapper<String>(model.search());
         listSearchResult.setItems(result);
         updateDetailView(model.getRecipe(result.get(0)));
-        listSearchResult.requestFocus();
         listSearchResult.getSelectionModel().select(0);
         listSearchResult.getFocusModel().focus(0);
     }
@@ -227,7 +223,7 @@ public class Controller implements Initializable {
         @Override
         public void changed(ObservableValue<? extends Number> observable, Number oldValue, Number newValue) {
             int val = newValue.intValue();
-            if (val % 10 == 0 && val != oldSliderVal) {
+            if (val % 10 == 0 && val != oldSliderVal && !sliderMaxTime.isValueChanging()) {
                 sliderMaxTimeOnSelected(val);
                 oldSliderVal = val;
             }
