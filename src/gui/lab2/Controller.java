@@ -95,6 +95,7 @@ public class Controller implements Initializable {
         ObservableList<String> result = new ObservableListWrapper<String>(model.search());
         listSearchResult.setItems(result);
         updateDetailView(model.getRecipe(result.get(0)));
+        listSearchResult.scrollTo(0);
         listSearchResult.getSelectionModel().select(0);
         listSearchResult.getFocusModel().focus(0);
     }
