@@ -71,9 +71,14 @@
             </AnchorPane>
           <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="160.0" prefWidth="100.0">
                <children>
-                  <ImageView fx:id="imgFoodBanner" fitHeight="334.0" fitWidth="1342.0" layoutX="14.0" pickOnBounds="true" AnchorPane.leftAnchor="14.0" AnchorPane.rightAnchor="-14.0" AnchorPane.topAnchor="0.0">
+                  <ImageView fx:id="imgFoodBanner" fitHeight="334.0" fitWidth="1342.0" pickOnBounds="true" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
                      <image>
                         <Image url="@../../res/img/default-food.jpg" />
+                     </image>
+                  </ImageView>
+                  <ImageView fx:id="imgRecipe" fitHeight="442.0" fitWidth="300.0" layoutX="14.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="17.0">
+                     <image>
+                        <Image url="@../../res/img/recipe1.jpg" />
                      </image>
                   </ImageView>
                   <Label fx:id="labelName" layoutX="22.0" layoutY="354.0" prefHeight="84.0" prefWidth="956.0" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="354.0">

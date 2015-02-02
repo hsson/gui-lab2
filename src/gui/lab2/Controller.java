@@ -57,6 +57,8 @@ public class Controller implements Initializable {
     @FXML
     private ImageView imgFoodBanner;
     @FXML
+    private ImageView imgRecipe;
+    @FXML
     private ProgressBar progressDiff;
 
 
@@ -125,6 +127,10 @@ public class Controller implements Initializable {
         }
 
         imgFoodBanner.setImage(new Image("/res/img/" + r.getCuisine() + ".jpg"));
+        imgRecipe.setImage(new Image("/res/img/"+ r.getImage().getDescription()));
+        double recipeImageRatio = imgRecipe.getImage().getHeight() / imgRecipe.getImage().getWidth();
+        imgRecipe.setFitHeight(300);
+        imgRecipe.setFitWidth(300 * recipeImageRatio);
     }
 
     private void listSearchResultOnClicked() {
