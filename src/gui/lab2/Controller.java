@@ -6,6 +6,7 @@ import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.geometry.Pos;
 import javafx.scene.control.*;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -235,6 +236,10 @@ public class Controller implements Initializable {
         public void updateItem(String item, boolean empty) {
             super.updateItem(item, empty);
             if (item != null) {
+                HBox master = new HBox();
+                VBox container = new VBox();
+                HBox details = new HBox();
+
                 Recipe r = model.getRecipe(item);
                 Label name = new Label(r.getName());
                 ProgressBar bar = new ProgressBar();
@@ -252,12 +257,18 @@ public class Controller implements Initializable {
                 timeIcon.setFitHeight(32);
                 timeIcon.setFitWidth(32);
                 Label time = new Label(r.getTime() + " minuter");
-                VBox container = new VBox();
-                HBox details = new HBox();
+                ImageView recipeImage = new ImageView("/res/img/" + r.getImage().getDescription());
+                double recipeImageRatio = recipeImage.getImage().getHeight() / recipeImage.getImage().getWidth();
+                recipeImage.setFitHeight(64);
+                recipeImage.setFitWidth(64 * recipeImageRatio);
+
                 details.setSpacing(16);
                 details.getChildren().addAll(bar, timeIcon, time);
                 container.getChildren().addAll(name, details);
-                setGraphic(container);
+                master.setSpacing(16);
+                master.setAlignment(Pos.CENTER_LEFT);
+                master.getChildren().addAll(recipeImage, container);
+                setGraphic(master);
             }
         }
     }
