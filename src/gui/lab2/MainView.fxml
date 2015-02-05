@@ -24,7 +24,7 @@
                            <children>
                               <VBox layoutX="18.0" layoutY="32.0" prefHeight="285.0" prefWidth="320.0" spacing="16.0" AnchorPane.bottomAnchor="32.0" AnchorPane.leftAnchor="18.0" AnchorPane.rightAnchor="14.0" AnchorPane.topAnchor="32.0">
                                  <children>
-                                    <Label maxWidth="1.7976931348623157E308" prefHeight="65.0" prefWidth="540.0" text="Sök på recept">
+                                    <Label maxWidth="1.7976931348623157E308" text="Sök på recept">
                                        <graphic>
                                           <ImageView fitHeight="65.0" fitWidth="65.0" pickOnBounds="true" preserveRatio="true">
                                              <image>
@@ -36,27 +36,27 @@
                                           <Font size="36.0" />
                                        </font>
                                     </Label>
-                                    <ComboBox fx:id="comboIngredient" maxWidth="1.7976931348623157E308" onAction="#comboIngredientOnAction" prefHeight="51.0" prefWidth="403.0" promptText="Huvudingrediens" />
-                                    <AnchorPane prefHeight="45.0" prefWidth="532.0">
+                                    <ComboBox fx:id="comboIngredient" maxWidth="1.7976931348623157E308" onAction="#comboIngredientOnAction" promptText="Huvudingrediens" />
+                                    <AnchorPane>
                                        <children>
                                           <Label contentDisplay="RIGHT" maxWidth="1.7976931348623157E308" text="Maxpris (kr): " AnchorPane.leftAnchor="0.0" />
-                                          <TextField fx:id="textMaxPrice" layoutX="135.0" layoutY="-7.0" maxWidth="1.7976931348623157E308" onAction="#textMaxPriceOnAction" onKeyReleased="#textMaxPriceOnAction" prefHeight="51.0" prefWidth="397.0" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="0.0" />
+                                          <TextField fx:id="textMaxPrice" layoutX="135.0" layoutY="-7.0" maxWidth="1.7976931348623157E308" onAction="#textMaxPriceOnAction" onKeyReleased="#textMaxPriceOnAction" AnchorPane.leftAnchor="135.0" AnchorPane.rightAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
-                                    <HBox maxWidth="1.7976931348623157E308" prefHeight="60.0" prefWidth="532.0">
+                                    <HBox maxWidth="1.7976931348623157E308">
                                        <children>
-                                          <ToggleButton fx:id="toggleEasy" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#toggleEasyOnAction" prefHeight="51.0" styleClass="easy" text="Lätt" HBox.hgrow="ALWAYS" />
+                                          <ToggleButton fx:id="toggleEasy" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#toggleEasyOnAction" styleClass="easy" text="Lätt" HBox.hgrow="ALWAYS" />
                                           <ToggleButton fx:id="toggleMedium" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#toggleMediumOnAction" styleClass="medium" text="Mellan" HBox.hgrow="ALWAYS" />
-                                          <ToggleButton fx:id="toggleHard" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#toggleHardOnAction" prefHeight="51.0" styleClass="hard" text="Svår" HBox.hgrow="ALWAYS" />
+                                          <ToggleButton fx:id="toggleHard" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#toggleHardOnAction" styleClass="hard" text="Svår" HBox.hgrow="ALWAYS" />
                                        </children>
                                     </HBox>
-                                    <AnchorPane prefHeight="102.0" prefWidth="532.0">
+                                    <AnchorPane>
                                        <children>
                                           <CheckBox fx:id="checkMaxTime" alignment="CENTER" layoutX="22.0" layoutY="-3.0" mnemonicParsing="false" onAction="#checkMaxTimeOnAction" selected="true" text="Maxtid (minuter)" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
-                                          <Slider fx:id="sliderMaxTime" layoutY="49.0" majorTickUnit="20.0" max="150.0" maxWidth="1.7976931348623157E308" min="10.0" minorTickCount="1" prefHeight="28.0" prefWidth="533.0" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
+                                          <Slider fx:id="sliderMaxTime" layoutY="49.0" majorTickUnit="20.0" max="150.0" maxWidth="1.7976931348623157E308" min="10.0" minorTickCount="1" showTickLabels="true" showTickMarks="true" snapToTicks="true" value="10.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" />
                                        </children>
                                     </AnchorPane>
-                                    <ComboBox fx:id="comboCuisine" maxWidth="1.7976931348623157E308" onAction="#comboCuisineOnAction" prefHeight="51.0" prefWidth="1.0E22" promptText="Kök" />
+                                    <ComboBox fx:id="comboCuisine" maxWidth="1.7976931348623157E308" onAction="#comboCuisineOnAction" promptText="Kök" />
                                  </children>
                               </VBox>
                            </children>
