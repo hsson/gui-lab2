@@ -65,6 +65,8 @@ public class Controller implements Initializable {
 
 
 
+
+
     private Model model = new Model();
     private int oldSliderVal;
     private int oldMaxPriceVal = 0;
@@ -133,8 +135,8 @@ public class Controller implements Initializable {
         imgFoodBanner.setImage(new Image("/res/img/" + r.getCuisine() + ".jpg"));
         imgRecipe.setImage(new Image("/res/img/"+ r.getImage().getDescription()));
         double recipeImageRatio = imgRecipe.getImage().getHeight() / imgRecipe.getImage().getWidth();
-        imgRecipe.setFitHeight(300);
-        imgRecipe.setFitWidth(300 * recipeImageRatio);
+        imgRecipe.setFitHeight(144);
+        imgRecipe.setFitWidth(122 * recipeImageRatio);
     }
 
     private void listSearchResultOnClicked() {
