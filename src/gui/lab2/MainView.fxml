@@ -146,6 +146,7 @@
                         </Label>
                      </children>
                   </HBox>
+                  <Label fx:id="labelPrice" layoutX="148.0" layoutY="271.0" text="(125 kr)" />
                </children></AnchorPane>
         </items>
       </SplitPane>

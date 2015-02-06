@@ -55,6 +55,8 @@ public class Controller implements Initializable {
     @FXML
     private Label labelCuisine;
     @FXML
+    private Label labelPrice;
+    @FXML
     private ImageView imgVeg;
     @FXML
     private ImageView imgFoodBanner;
@@ -62,6 +64,7 @@ public class Controller implements Initializable {
     private ImageView imgRecipe;
     @FXML
     private ProgressBar progressDiff;
+
 
 
 
@@ -112,6 +115,7 @@ public class Controller implements Initializable {
         labelServings.setText(r.getServings() + " portioner");
         labelTime.setText(r.getTime() + " minuter");
         labelCuisine.setText(r.getCuisine());
+        labelPrice.setText("(" + r.getPrice() + " kr)");
         textDescription.setText(r.getDescription());
         List<String> ingredientList = new ArrayList<String>();
         for (Ingredient i : r.getIngredients()) {
@@ -267,19 +271,19 @@ public class Controller implements Initializable {
                     bar.setProgress(1);
                 }
                 ImageView timeIcon = new ImageView("/res/img/time.png");
-                timeIcon.setFitHeight(32);
-                timeIcon.setFitWidth(32);
+                timeIcon.setFitHeight(16);
+                timeIcon.setFitWidth(16);
                 Label time = new Label(r.getTime() + " minuter");
 
                 ImageView recipeImage = new ImageView("/res/img/" + r.getImage().getDescription());
                 double recipeImageRatio = recipeImage.getImage().getHeight() / recipeImage.getImage().getWidth();
-                recipeImage.setFitHeight(64);
-                recipeImage.setFitWidth(64 * recipeImageRatio);
+                recipeImage.setFitHeight(32);
+                recipeImage.setFitWidth(32 * recipeImageRatio);
 
-                details.setSpacing(16);
+                details.setSpacing(8);
                 details.getChildren().addAll(bar, timeIcon, time);
                 container.getChildren().addAll(name, details);
-                master.setSpacing(16);
+                master.setSpacing(8);
                 master.setAlignment(Pos.CENTER_LEFT);
                 master.getChildren().addAll(recipeImage, container);
                 setGraphic(master);
