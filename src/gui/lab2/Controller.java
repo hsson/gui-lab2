@@ -53,6 +53,8 @@ public class Controller implements Initializable {
     @FXML
     private Label labelVeg;
     @FXML
+    private Label labelCuisine;
+    @FXML
     private ImageView imgVeg;
     @FXML
     private ImageView imgFoodBanner;
@@ -60,6 +62,7 @@ public class Controller implements Initializable {
     private ImageView imgRecipe;
     @FXML
     private ProgressBar progressDiff;
+
 
 
     private Model model = new Model();
@@ -106,6 +109,7 @@ public class Controller implements Initializable {
         labelName.setText(r.getName());
         labelServings.setText(r.getServings() + " portioner");
         labelTime.setText(r.getTime() + " minuter");
+        labelCuisine.setText(r.getCuisine());
         textDescription.setText(r.getDescription());
         List<String> ingredientList = new ArrayList<String>();
         for (Ingredient i : r.getIngredients()) {
@@ -264,6 +268,7 @@ public class Controller implements Initializable {
                 timeIcon.setFitHeight(32);
                 timeIcon.setFitWidth(32);
                 Label time = new Label(r.getTime() + " minuter");
+
                 ImageView recipeImage = new ImageView("/res/img/" + r.getImage().getDescription());
                 double recipeImageRatio = recipeImage.getImage().getHeight() / recipeImage.getImage().getWidth();
                 recipeImage.setFitHeight(64);
