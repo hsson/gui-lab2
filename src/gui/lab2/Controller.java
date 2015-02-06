@@ -55,6 +55,8 @@ public class Controller implements Initializable {
     @FXML
     private Label labelCuisine;
     @FXML
+    private Label labelPrice;
+    @FXML
     private ImageView imgVeg;
     @FXML
     private ImageView imgFoodBanner;
@@ -62,8 +64,6 @@ public class Controller implements Initializable {
     private ImageView imgRecipe;
     @FXML
     private ProgressBar progressDiff;
-
-
 
     private Model model = new Model();
     private int oldSliderVal;
@@ -110,6 +110,7 @@ public class Controller implements Initializable {
         labelServings.setText(r.getServings() + " portioner");
         labelTime.setText(r.getTime() + " minuter");
         labelCuisine.setText(r.getCuisine());
+        labelPrice.setText("(" + r.getPrice()+ " kr)");
         textDescription.setText(r.getDescription());
         List<String> ingredientList = new ArrayList<String>();
         for (Ingredient i : r.getIngredients()) {
